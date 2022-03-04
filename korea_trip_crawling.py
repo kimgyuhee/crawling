@@ -1,11 +1,11 @@
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+#vhfrom webdriver_manager.chrome import ChromeDriverManager
 import time
 import sys
 import os # 폴더 집어 넣기 위해
 import math
-import xlwt
 import pandas as pd
 import re # 정규 표현식을 사용하기 위한 모듈 선언
 
@@ -138,8 +138,7 @@ page_cnt = math.ceil(cnt/10) # 크롤링할 전체 페이지 수
 
 
 s_time = time.time() # 시작 시간
-path = "C:/web_driver/chromedriver.exe"
-driver = webdriver.Chrome(path)
+driver = webdriver.Chrome('C:\chromedriver_win32\chromedriver.exe')
 driver.get("https://korean.visitkorea.or.kr/")
 
 time.sleep(2)
@@ -192,7 +191,6 @@ for page_num in range(1, real_page_cnt+1) :
     
     
     time.sleep(1)
-    #driver.find_element_by_xpath(page_path).send_keys(Keys.ENTER)
     driver.find_element_by_link_text('%d' %page_num).send_keys(Keys.ENTER)
     time.sleep(1)
     
